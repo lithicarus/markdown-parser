@@ -14,6 +14,7 @@ public class MarkdownParse {
         boolean validMarkdownLink = true;
         while(currentIndex < markdown.length()) {
             //System.out.println(validMarkdownLink);
+            int imageMarker = markdown.indexOf("!",currentIndex);
             int openBracket = markdown.indexOf("[", currentIndex);
             int closeBracket = markdown.indexOf("]", openBracket);
             int openParen = markdown.indexOf("(", closeBracket);
@@ -31,7 +32,7 @@ public class MarkdownParse {
                 validMarkdownLink=false;
                 break;
             }
-            else if(markdown.indexOf("!")==openBracket-1&& markdown.indexOf("!")!=-1)
+            else if(imageMarker==openBracket-1&& imageMarker!=-1)
             {
                 validMarkdownLink=false;
                 //System.out.println("not an image");
