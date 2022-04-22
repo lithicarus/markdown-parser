@@ -13,11 +13,54 @@ public class MarkdownParseTest {
     }
 
     @Test
-    public void TestLinks()throws IOException{   
+    public void TestLinksGiven()throws IOException{   
         content = Files.readString(Path.of("test-file.md"));
         ArrayList<String> links = md.getLinks(content);
         assertEquals("tests if the links are the same", "https://something.com", links.get(0));
         assertEquals("tests if the links are the same", "some-thing.html",links.get(1));
+    }
+    @Test
+    public void TestLinksStandard()throws IOException{   
+        content = Files.readString(Path.of("test.md"));
+        ArrayList<String> links = md.getLinks(content);
+        assertEquals("tests if the links are the same", "google.com", links.get(0));
+    }
+    @Test
+    public void TestLinksEnd()throws IOException{   
+        content = Files.readString(Path.of("testEnd.md"));
+        ArrayList<String> links = md.getLinks(content);
+        assertEquals("tests if the links are the same", "meow.com", links.get(0));
+    }
+        
+    @Test
+    public void TestLinksImage()throws IOException{   
+        content = Files.readString(Path.of("testImage.md"));
+        ArrayList<String> links = md.getLinks(content);
+        assertEquals("tests if the links are the same", 0, links.size());
+    }
+    @Test
+    public void TestLinksBundle()throws IOException{   
+        content = Files.readString(Path.of("testImagesSpacedBrackets.md"));
+        ArrayList<String> links = md.getLinks(content);
+        assertEquals("tests if the links are the same", 0, links.size());
+    }
+    @Test
+    public void TestLinksMiddle()throws IOException{   
+        content = Files.readString(Path.of("testMiddle.md"));
+        ArrayList<String> links = md.getLinks(content);
+        assertEquals("tests if the links are the same", "meow.com", links.get(0));
+    }
+    @Test
+    public void TestLinksNoParantheses()throws IOException{   
+        content = Files.readString(Path.of("testNoParantheses.md"));
+        ArrayList<String> links = md.getLinks(content);
+        assertEquals("tests if the links are the same", 0, links.size());
+    }
+    @Test
+    public void TestLinksNoBrackets()throws IOException{   
+        content = Files.readString(Path.of("testNoBracket.md"));
+        ArrayList<String> links = md.getLinks(content);
+        assertEquals("tests if the links are the same", 0, links.size());
     }
 
 }
