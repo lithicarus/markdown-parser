@@ -19,14 +19,7 @@ public class MarkdownParse {
             int closeBracket = markdown.indexOf("]", openBracket);
             int openParen = markdown.indexOf("(", closeBracket);
             int closeParen = markdown.indexOf(")", openParen);
-            if(closeParen-openParen==-1)
-            {
-                validMarkdownLink=false;
-                //System.out.println("link is empty");
-                currentIndex = closeParen + 1;
-                continue;
-            }
-            else if(openBracket==-1||openParen==-1||closeBracket==-1||closeParen==-1)
+            if(openBracket==-1||openParen==-1||closeBracket==-1||closeParen==-1)
             {
                 //System.out.println("no brackets or parantheses");
                 validMarkdownLink=false;

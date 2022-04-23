@@ -1,4 +1,4 @@
-[hello](google.com)
+[hello] hi (google.com)
 anfjabofbaf
 aioibfoabfioaf
 aofbaofbaeoiuf
