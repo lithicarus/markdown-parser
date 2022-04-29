@@ -22,7 +22,7 @@ public class MarkdownParseTest {
     public void TestLinksStandard()throws IOException{   
         content = Files.readString(Path.of("test.md"));
         ArrayList<String> links = MarkdownParse.getLinks(content);
-        assertEquals("tests if the links are the same", "google.com", links.get(2));
+        assertEquals("tests if the links are the same", "google.com", links.get(0));
     }
     @Test
     public void TestLinksEnd()throws IOException{   
