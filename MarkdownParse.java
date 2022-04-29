@@ -30,14 +30,17 @@ public class MarkdownParse {
                 validMarkdownLink=false;
                 //System.out.println("not an image");
             }
-            if(openParen-closeBracket!=1||closeParen-openParen==1){
+            else if (markdown.contains("!")) {
+                validMarkdownLink=false;
+            }
+            else if(openParen-closeBracket!=1||closeParen-openParen==1){
                 validMarkdownLink=false;
                 //System.out.println("incorrect link syntax");
                 //second portion tests empty link
                 currentIndex=openParen+1;
                 continue;  
             }
-            if(validMarkdownLink==true)
+            else if(validMarkdownLink==true)
             {
                 //System.out.println("found");
                 toReturn.add(markdown.substring(openParen + 1, closeParen));
