@@ -68,5 +68,25 @@ public class MarkdownParseTest {
         assertEquals("tests if the links are the same", 0, links.size());
     }
 
+    @Test
+    public void TestLinkMultipleLines()throws IOException{   
+        content = Files.readString(Path.of("testLinkMultipleLines.md"));
+        ArrayList<String> links = MarkdownParse.getLinks(content);
+        assertEquals("tests if the links are the same", 1, links.size());
+    }
+    @Test
+    public void TestLinkCurlyBraces()throws IOException{   
+        content = Files.readString(Path.of("testLinkCurlyBraces.md"));
+        ArrayList<String> links = MarkdownParse.getLinks(content);
+        assertEquals("tests if the links are the same", 0, links.size());
+    }
+
+    @Test
+    public void TestIncorrectImage()throws IOException{   
+        content = Files.readString(Path.of("testIncorrectImage.md"));
+        ArrayList<String> links = MarkdownParse.getLinks(content);
+        assertEquals("tests if the links are the same", 0, links.size());
+    }
+
 }
 
