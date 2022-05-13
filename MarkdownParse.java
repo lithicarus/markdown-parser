@@ -26,29 +26,24 @@ public class MarkdownParse {
             int closeBracket = markdown.indexOf("]", openBracket);
             int openParen = markdown.indexOf("(", closeBracket);
             int closeParen = markdown.indexOf(")", openParen);
-            if(openBracket==-1||openParen==-1||closeBracket==-1||closeParen==-1)
-            {
+            if (openBracket==-1||openParen==-1||closeBracket==-1||closeParen==-1) {
                 //System.out.println("no brackets or parantheses");
                 validMarkdownLink=false;
                 break;
             }
-            else if(imageMarker==openBracket-1&& imageMarker!=-1)
-            {
+            else if ((imageMarker==openBracket-1&& imageMarker!=-1) 
+                    || markdown.contains("!")) {
                 validMarkdownLink=false;
                 //System.out.println("not an image");
             }
-            else if (markdown.contains("!")) {
-                validMarkdownLink=false;
-            }
-            else if(openParen-closeBracket!=1||closeParen-openParen==1){
+            else if(openParen-closeBracket!=1||closeParen-openParen==1) {
                 validMarkdownLink=false;
                 //System.out.println("incorrect link syntax");
                 //second portion tests empty link
                 currentIndex=openParen+1;
                 continue;  
             }
-            else if(validMarkdownLink==true)
-            {
+            else if (validMarkdownLink==true) {
                 //System.out.println("found");
                 toReturn.add(markdown.substring(openParen + 1, closeParen));
             }
