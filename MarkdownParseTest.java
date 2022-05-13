@@ -89,5 +89,40 @@ public class MarkdownParseTest {
         assertEquals("tests if the links are the same", 0, links.size());
     }
 
+    @Test
+    public void TestLinksWrongFormat()throws IOException{   
+        content = Files.readString(Path.of("test-file2.md"));
+        ArrayList<String> links = MarkdownParse.getLinks(content);
+        assertEquals("tests if the links are the same", 0, links.size());
+    }
+
+    @Test
+    public void TestNoLinks()throws IOException{   
+        content = Files.readString(Path.of("test-file3.md"));
+        ArrayList<String> links = MarkdownParse.getLinks(content);
+        assertEquals("tests if the links are the same", 0, links.size());
+    }
+
+    @Test
+    public void TestNoLinks2()throws IOException{   
+        content = Files.readString(Path.of("test-file4.md"));
+        ArrayList<String> links = MarkdownParse.getLinks(content);
+        assertEquals("tests if the links are the same", 0, links.size());
+    }
+
+    @Test
+    public void TestLinksWrongPlace()throws IOException{   
+        content = Files.readString(Path.of("test-file5.md"));
+        ArrayList<String> links = MarkdownParse.getLinks(content);
+        assertEquals("tests if the links are the same", 0, links.size());
+    }
+
+    @Test
+    public void TestWrongFormat()throws IOException{   
+        content = Files.readString(Path.of("test-file6.md"));
+        ArrayList<String> links = MarkdownParse.getLinks(content);
+        assertEquals("tests if the links are the same", 0, links.size());
+    }
+
 }
 

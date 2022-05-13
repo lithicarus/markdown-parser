@@ -47,7 +47,7 @@ public class MarkdownParse {
                 currentIndex=openParen+1;
                 continue;  
             }
-            else if(validMarkdownLink==true)
+            else if (validMarkdownLink==true)
             {
                 //System.out.println("found");
                 toReturn.add(markdown.substring(openParen + 1, closeParen));
