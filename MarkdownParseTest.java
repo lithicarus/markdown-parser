@@ -124,5 +124,49 @@ public class MarkdownParseTest {
         assertEquals("tests if the links are the same", 0, links.size());
     }
 
+    @Test
+    public void testSnippet1()throws IOException{   
+        content = Files.readString(Path.of("snippet1.md"));
+        ArrayList<String> links = MarkdownParse.getLinks(content);
+        
+        ArrayList<String> expected = new ArrayList<>();
+
+        
+        expected.add("`google.com");
+        expected.add("google.com");
+        expected.add("ucsd.edu");
+        
+        assertEquals(expected, links);
+        assertEquals(3, links.size());
+        
+    }
+    @Test
+    public void testSnippet2()throws IOException{   
+        content = Files.readString(Path.of("snippet2.md"));
+        ArrayList<String> links = MarkdownParse.getLinks(content);
+        ArrayList<String> expected = new ArrayList<>();
+
+        expected.add("a.com");
+        expected.add("a.com(())");
+        expected.add("example.com");
+        
+        assertEquals(expected, links);
+        assertEquals(3, links.size());
+    }
+    @Test
+    public void testSnippet3()throws IOException{   
+        content = Files.readString(Path.of("snippet3.md"));
+        ArrayList<String> links = MarkdownParse.getLinks(content);
+
+        //https://sites.google.com/eng.ucsd.edu/cse-15l-spring-2022/schedule
+        ArrayList<String> expected = new ArrayList<>();
+
+        expected.add("https://sites.google.com/eng.ucsd.edu/cse-15l-spring-2022/schedule");
+
+        
+        assertEquals(expected, links);
+        assertEquals(1, links.size());
+    }
+
 }
 
